@@ -1,0 +1,11 @@
+# Python
+__pycache__
+
+# pyenv
+.python-version
+
+# virtualenv
+venv/
+
+# IDE
+.idea/
