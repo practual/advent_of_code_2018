@@ -2,10 +2,7 @@
 
 # http://adventofcode.com/2018/day/5
 
-import re
 import sys
-from collections import Counter, defaultdict
-from datetime import datetime
 
 input_file_name = sys.argv[1]
 
@@ -25,7 +22,7 @@ def get_opposite(char):
 def react(polymer, exclude_char=None):
     stack = []
     for unit in polymer:
-        if unit == exclude_char or get_opposite(unit) == exclude_char:
+        if exclude_char in [unit, get_opposite(unit)]:
             continue
         if len(stack) and stack[-1] == get_opposite(unit):
             stack.pop()
@@ -36,8 +33,6 @@ def react(polymer, exclude_char=None):
 
 print(len(react(polymer_string)))
 
-trials = []
-for c in range(65, 65 + 26):
-    trials.append(len(react(polymer_string, chr(c))))
+trials = [len(react(polymer_string, chr(c))) for c in range(65, 65 + 26)]
 
 print(min(trials))
