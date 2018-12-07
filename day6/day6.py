@@ -74,7 +74,7 @@ flat_map = distance_map.reshape(max_x * max_y, 2)
 # Count size of areas, and find the top X occurrences, where X is larger than the number of infinite
 # areas to guarantee we find a non-infinite area.
 # Then just get the first value that isn't infinite.
-print(next(area[1] for area in Counter(tuple(map(tuple, flat_map))).most_common(len(infinite_areas)) if area[0] not in infinite_areas))
+print(next(area[1] for area in Counter(map(tuple, flat_map)).most_common(len(infinite_areas) + 1) if area[0] not in infinite_areas))
 
 # PART 2
 # This probably wouldn't work in the general case as there could be suitable locations outside of the
