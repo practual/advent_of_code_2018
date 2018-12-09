@@ -15,12 +15,11 @@ def find_high_score(num_players, max_marble_value):
             marbles.rotate(-1)
             marbles.append(marble)
         else:
-            player_points[current_player] += marble
             marbles.rotate(7)
-            player_points[current_player] += marbles.pop()
+            player_points[current_player] += marble + marbles.pop()
             marbles.rotate(-1)
         current_player += 1
-        current_player = current_player % num_players
+        current_player %= num_players
 
     return max(player_points.values())
 
